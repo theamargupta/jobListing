@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import loadingReducer from './loadingReducer';
 import createReducer from './createReducer';
-import errorReducer from './errorReducer';
+import jobsReducer from './jobsReducer';
 
 const rootReducer = combineReducers({
-  isLoading: loadingReducer,
   user: createReducer,
-  error: errorReducer,
+  jobs:jobsReducer,
 });
 export default rootReducer;

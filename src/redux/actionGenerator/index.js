@@ -4,6 +4,7 @@ import {
   createUser,
   fireError,
   statePersist,
+  jobList,
 } from '../actionType';
 
 export const SignInUser = (payload) => ({
@@ -24,5 +25,9 @@ export const setUser = (payload) => ({
 });
 export const setError = (payload) => ({
   type: fireError,
+  payload,
+});
+export const jobsListGen = (payload) => ({
+  type: jobList,
   payload,
 });

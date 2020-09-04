@@ -6,12 +6,13 @@ import { SignInUser, authState } from '../../redux/actionGenerator';
 import CustomTextInput from '../../components/CustomTextInput';
 // import ContentLoader from '../../components/ContentLoader';
 import CircularLoader from '../../components/circularLoader';
-import { auth } from '../../firebase';
-import { Redirect } from 'react-router-dom';
+import { auth, signInWithGoogle } from '../../firebase';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Login = () => {
+  const history = useHistory();
   const { user, isLoading } = useSelector(
-    ({ user, isLoading, error }) => ({
+    ({ user: { user, isLoading, error } }) => ({
       user: user,
       isLoading: isLoading,
       error: error,
@@ -68,6 +69,13 @@ const Login = () => {
             <button type='submit'>
               {props.isSubmitting ? 'loading...' : 'submit'}
             </button>
+            <p>
+              New to Job Listing?{' '}
+              <span onClick={() => history.push('/signup')}>Sign up now. </span>
+            </p>
+            <div onClick={() => signInWithGoogle()}>
+              <p>Login with Google</p>
+            </div>
           </Form>
         )}
       </Formik>

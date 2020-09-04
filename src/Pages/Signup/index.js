@@ -7,11 +7,12 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import CircularLoader from '../../components/circularLoader';
 import CustomCheckBox from '../../components/CustomCheckBox';
 import CustomTextInput from '../../components/CustomTextInput';
-import { auth } from '../../firebase';
-import { Redirect } from 'react-router-dom';
+import { auth, signInWithGoogle } from '../../firebase';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Signup = () => {
-  const { user, isLoading, error } = useSelector(
+  const history = useHistory();
+  const { user, isLoading } = useSelector(
     ({ user, isLoading, error }) => ({
       user: user,
       isLoading: isLoading,
@@ -90,6 +91,13 @@ const Signup = () => {
             <button type='submit'>
               {props.isSubmitting ? 'loading...' : 'submit'}
             </button>
+            <p>
+              Already Signed Up ?{' '}
+              <span onClick={() => history.push('/')}>Login</span>
+            </p>
+            <div onClick={() => signInWithGoogle()}>
+              <p>Login with Google</p>
+            </div>
           </Form>
         )}
       </Formik>
