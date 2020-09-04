@@ -1,4 +1,8 @@
 ## Job Listing Web app
+1. Registration/Login Screen (Social Authentication)
+2. Job Listing Screen
+3. Job Creation Screen
+4. Job Details Screen
 
 Login =>
 
