@@ -1,7 +1,6 @@
 import React, { lazy, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Private';
-// const Header = lazy(() => import('../components/Header'));
 const Home = lazy(() => import('../Pages/Home'));
 const Login = lazy(() => import('../Pages/Login'));
 const Signup = lazy(() => import('../Pages/Signup'));

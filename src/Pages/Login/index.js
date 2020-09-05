@@ -72,24 +72,24 @@ const Login = () => {
                   type='password'
                   placeholder='********'
                 />
-                <div class='input-options'>
-                  <p class='sign-up'>
+                <div className='input-options'>
+                  <p className='sign-up'>
                     New to Job Listing? <Link to='/signup'>Sign up</Link>
                   </p>
-                  <button type='submit' class='input-button'>
+                  <button type='submit' className='input-button'>
                     {props.isSubmitting ? 'loading...' : 'Log In'}
-                    <img src={frame} class='btn-arrow' alt='' />
+                    <img src={frame} className='btn-arrow' alt='' />
                   </button>
                 </div>
 
-                <div class='alternative-options'>
+                <div className='alternative-options'>
                   <small>Or log in with</small>
-                  <div class='social-buttons'>
-                    <button class='social-button'>
+                  <div className='social-buttons'>
+                    <button className='social-button'>
                       <img src={fb} alt='' /> Github
                     </button>
                     <button
-                      class='social-button'
+                      className='social-button'
                       onClick={() => signInWithGoogle()}
                     >
                       <img src={Google} alt='' /> Google
@@ -99,7 +99,7 @@ const Login = () => {
               </Form>
             )}
           </Formik>
-          <div class='page-image'>
+          <div className='page-image'>
             <img src={rectangle} alt='' />
           </div>
         </div>

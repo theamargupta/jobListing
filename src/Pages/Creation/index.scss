@@ -1,0 +1,57 @@
+.create {
+  height: 100vh;
+  background-color: hsl(180, 29%, 50%);
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  color: hsl(180, 14%, 20%);
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    width: 1000px;
+    max-width: 90%;
+    margin: auto;
+    padding: 1em 0;
+  }
+
+  .create-page {
+    background-color: hsl(180, 52%, 96%);
+    display: flex;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2rem auto;
+    img {
+      height: 15vh;
+      width: 10vw;
+      object-fit: cover;
+    }
+    label {
+      margin-top: 2rem;
+    }
+    input,
+    select {
+      font-size: 1rem;
+    }
+    .error {
+      color: red;
+      font-size: 1rem;
+    }
+  }
+  button {
+    background: #1997bf;
+    padding: 0.5rem;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+}
