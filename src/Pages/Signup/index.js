@@ -13,7 +13,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 const Signup = () => {
   const history = useHistory();
   const { user, isLoading } = useSelector(
-    ({ user, isLoading, error }) => ({
+    ({ user: { user, isLoading, error } }) => ({
       user: user,
       isLoading: isLoading,
       error: error,
@@ -31,7 +31,6 @@ const Signup = () => {
       }
     });
   }, [dispatch]);
-  // console.log(user, isLoading, error);
   return user.displayName ? (
     <Redirect to='/home' />
   ) : !isLoading ? (
