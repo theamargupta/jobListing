@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { SignUpUser, authState } from '../../redux/actionGenerator';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-// import ContentLoader from '../../components/ContentLoader';
 import CircularLoader from '../../components/circularLoader';
 import CustomCheckBox from '../../components/CustomCheckBox';
 import CustomTextInput from '../../components/CustomTextInput';

@@ -4,7 +4,6 @@ import { Formik, Form } from 'formik';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { SignInUser, authState } from '../../redux/actionGenerator';
 import CustomTextInput from '../../components/CustomTextInput';
-// import ContentLoader from '../../components/ContentLoader';
 import CircularLoader from '../../components/circularLoader';
 import { auth, signInWithGoogle } from '../../firebase';
 import { Redirect, useHistory } from 'react-router-dom';

@@ -1,6 +1,5 @@
 import React, { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import Header from '../components/Header';
 import PrivateRoute from './Private';
 const Header = lazy(() => import('../components/Header'));
 const Home = lazy(() => import('../Pages/Home'));

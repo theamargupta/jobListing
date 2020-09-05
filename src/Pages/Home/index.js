@@ -3,6 +3,7 @@ import firestore, { auth } from '../../firebase';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { jobsListGen } from '../../redux/actionGenerator';
 import { useHistory } from 'react-router-dom';
+import CircularLoader from '../../components/circularLoader';
 
 const Home = () => {
   const { jobs, loading } = useSelector(
@@ -22,15 +23,18 @@ const Home = () => {
         dispatch(jobsListGen(snapshot.docs.map((doc) => doc.data())));
       });
   }, [dispatch]);
-  return (
+  return loading ? (
+    <CircularLoader />
+  ) : (
     <div>
       Home
       <button onClick={() => auth.signOut()}>SignOut</button>
-      {/* <button onClick={() => handleClick()}>Show</button> */}
       <div>
-        {/* {jobs.map((data) => (
-          <p>{data.id}</p>
-        ))} */}
+        {jobs.map((data) => (
+          <p key={data.id} onClick={() => history.push(`details/${data.id}`)}>
+            {data.id}
+          </p>
+        ))}
         <button onClick={() => history.push('details/1')}>Deatils</button>
       </div>
       <button onClick={() => history.push('/creation')}>creation</button>
