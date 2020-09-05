@@ -6,10 +6,14 @@ import { SignInUser, authState } from '../../redux/actionGenerator';
 import CustomTextInput from '../../components/CustomTextInput';
 import CircularLoader from '../../components/circularLoader';
 import { auth, signInWithGoogle } from '../../firebase';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import Google from '../../assets/Google__G__Logo 1.svg';
+import fb from '../../assets/f_logo_RGB-Blue_72 1.svg';
+import frame from '../../assets/Frame.svg';
+import rectangle from '../../assets/Rectangle 5.png';
+import './index.scss';
 
 const Login = () => {
-  const history = useHistory();
   const { user, isLoading } = useSelector(
     ({ user: { user, isLoading, error } }) => ({
       user: user,
@@ -30,55 +34,79 @@ const Login = () => {
   return user.displayName ? (
     <Redirect to='/home' />
   ) : !isLoading ? (
-    <div>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        validationSchema={Yup.object({
-          email: Yup.string().email('Invalid Email').required('Required'),
-          password: Yup.string()
-            .required()
-            .min(2, 'Seems a bit short...')
-            .max(10, 'We prefer insecure system, try a shorter password.'),
-        })}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          handleClick(values);
-          resetForm();
-          setSubmitting(false);
-        }}
-      >
-        {(props) => (
-          <Form>
-            <h1>Login Form</h1>
+    <div className='container_main'>
+      <div className='container'>
+        <div className='login-page'>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email('Invalid Email')
+                .required('Email is Required'),
+              password: Yup.string()
+                .required('Password is Required')
+                .min(2, 'Seems a bit short...')
+                .max(10, 'We prefer insecure system, try a shorter password.'),
+            })}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              handleClick(values);
+              resetForm();
+              setSubmitting(false);
+            }}
+          >
+            {(props) => (
+              <Form className='login-form'>
+                <h3 className='title'>Log In</h3>
+                <CustomTextInput
+                  label='Email'
+                  name='email'
+                  type='email'
+                  placeholder='example@test.com'
+                />
+                <CustomTextInput
+                  label='Password'
+                  name='password'
+                  type='password'
+                  placeholder='********'
+                />
+                <div class='input-options'>
+                  <p class='sign-up'>
+                    New to Job Listing? <Link to='/signup'>Sign up</Link>
+                  </p>
+                  <button type='submit' class='input-button'>
+                    {props.isSubmitting ? 'loading...' : 'Log In'}
+                    <img src={frame} class='btn-arrow' alt='' />
+                  </button>
+                </div>
 
-            <CustomTextInput
-              label='Email'
-              name='email'
-              type='email'
-              placeholder='theamargupta.tech@gmail.com'
-            />
-            <CustomTextInput
-              label='Password'
-              name='password'
-              type='password'
-              placeholder='********'
-            />
-            <button type='submit'>
-              {props.isSubmitting ? 'loading...' : 'submit'}
-            </button>
-            <p>
-              New to Job Listing?{' '}
-              <span onClick={() => history.push('/signup')}>Sign up now. </span>
-            </p>
-            <div onClick={() => signInWithGoogle()}>
-              <p>Login with Google</p>
-            </div>
-          </Form>
-        )}
-      </Formik>
+                <div class='alternative-options'>
+                  <small>Or log in with</small>
+                  <div class='social-buttons'>
+                    <button class='social-button'>
+                      <img src={fb} alt='' /> Github
+                    </button>
+                    <button
+                      class='social-button'
+                      onClick={() => signInWithGoogle()}
+                    >
+                      <img src={Google} alt='' /> Google
+                    </button>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <div class='page-image'>
+            <img src={rectangle} alt='' />
+          </div>
+        </div>
+      </div>
     </div>
+  ) : user.displayName ? (
+    <Redirect to='/home' />
   ) : (
     <CircularLoader />
   );

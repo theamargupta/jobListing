@@ -1,7 +1,7 @@
-import React, { lazy } from 'react';
+import React, { lazy, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Private';
-const Header = lazy(() => import('../components/Header'));
+// const Header = lazy(() => import('../components/Header'));
 const Home = lazy(() => import('../Pages/Home'));
 const Login = lazy(() => import('../Pages/Login'));
 const Signup = lazy(() => import('../Pages/Signup'));
@@ -11,8 +11,7 @@ const NotFound = lazy(() => import('../Pages/NotFound'));
 
 const AppRouter = () => {
   return (
-    <div>
-      <Header />
+    <Fragment>
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/signup' component={Signup} />
@@ -21,7 +20,7 @@ const AppRouter = () => {
         <PrivateRoute exact path='/details/:id' component={Details} />
         <Route component={NotFound} />
       </Switch>
-    </div>
+    </Fragment>
   );
 };
 export default AppRouter;

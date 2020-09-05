@@ -6,10 +6,10 @@ const CustomTextInput = ({ label, ...props }) => {
   return (
     <Fragment>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <input className='text-input' {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className='error'>{meta.error}</div>
+        <span className='error'> {meta.error}</span>
       ) : null}
+      <input className='form-input' {...field} {...props} />
     </Fragment>
   );
 };

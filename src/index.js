@@ -4,6 +4,8 @@ import App from './app';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import ConfigStore from './redux';
+import './index.scss';
+
 const store = ConfigStore();
 store.subscribe(() => {
   console.log(store.getState());
