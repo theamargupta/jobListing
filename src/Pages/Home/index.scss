@@ -23,6 +23,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       button {
         padding: 0.5rem;
         font-size: 1rem;
@@ -32,6 +33,10 @@
         border: none;
       }
     }
+  }
+  .home__input-field {
+    margin-top: 2rem;
+    padding: .5rem;
   }
   .home__left {
     display: flex;

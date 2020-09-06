@@ -41,12 +41,14 @@ const Home = () => {
   ) : (
     <div className='home'>
       <Header />
+
       <motion.div
         className='home__main'
         initial='hidden'
         animate='visible'
         variants={list}
       >
+        <input type='text' className='home__input-field' />
         {jobs.map((data) => (
           <motion.div
             className='home__mainFc'
@@ -96,13 +98,3 @@ const Home = () => {
 };
 
 export default Home;
-// https://i.ibb.co/Gty0pDK/account.png
-// https://i.ibb.co/RbFP8yS/eyecam-co.png
-// https://i.ibb.co/fvyqSZV/faceit.png
-// https://i.ibb.co/CtC38N0/insure.png
-// https://i.ibb.co/5rGjJyF/loop-studios.png
-// https://i.ibb.co/XLZ7sy8/manage.png
-// https://i.ibb.co/7N92QwF/myhome.png
-// https://i.ibb.co/6nDYTTQ/photosnap.png
-// https://i.ibb.co/k2ghK4f/shortly.png
-// https://i.ibb.co/nzBqfbL/the-air-filter-company.png

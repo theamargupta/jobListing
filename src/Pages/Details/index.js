@@ -24,25 +24,23 @@ const Details = () => {
   ) : (
     <div className='details'>
       <Header />
-      <div className='container'>
+        <div className='container'>
         <div className='main'>
           <img src={state.logo} alt='' />
           <h1>{state.position}</h1>
           <div className='home__upper'>
-            <h5>{state.company}</h5>
-            {state.new && <button>New!</button>}
-            {state.featured && <button>Featured</button>}
+            <h2>{state.company}</h2>
+            <p>{state.location}</p>
           </div>
           <div className='home__lower'>
             <p>
-              {state.postedAt} {'   .'}
+              {state.postedAt}
             </p>
             <p>
-              {state.contract} {'   .'}
+              {state.contract}
             </p>
-            <p>{state.location}</p>
           </div>
-          <div>
+          <div className='home__description'>
             <p>{state.desc}</p>
           </div>
         </div>

@@ -9,17 +9,60 @@
 .details {
   background: hsl(180, 52%, 96%);
   min-height: 100vh;
+
   .container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     height: 50vh;
+
     .main {
       display: flex;
       align-items: center;
       flex-direction: column;
+      padding: 2rem 1.5rem;
+      margin: 3rem 0;
+      background: #fff;
+
+      .home__upper {
+        p {
+          color: hsl(180, 8%, 52%);
+          font-size: 1.2rem;
+        }
+      }
+
+      .home__lower {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        p:first-child {
+          background: hsl(180, 29%, 50%);
+          padding: 0.7rem 1rem;
+          color: white;
+        }
+
+        p:last-child {
+          background: hsl(180, 52%, 96%);
+          padding: 0.7rem 1rem;
+          color: hsl(180, 29%, 50%);
+        }
+      }
+      .home__description {
+        p {
+          line-height: 1.6;
+        }
+      }
+      h3,
+      p {
+        margin: 0.7rem 0;
+      }
       p {
         max-width: 500px;
+      }
+      img {
+        margin-bottom: 1rem;
       }
     }
   }
