@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import './index.scss';
 
 const Home = () => {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('');
   const [filteredJobs, setFilteredJobs] = useState([]);
   const { jobs, loading } = useSelector(
     ({ jobs: { jobs, loading } }) => ({
@@ -31,9 +31,8 @@ const Home = () => {
 
   // Handle the change
   const onChange = (e) => {
-    setInput(e.target.value)
-    console.log(jobs[0].tools, jobs[0].languages)
-  }
+    setInput(e.target.value);
+  };
 
   const list = {
     visible: { opacity: 1 },
@@ -44,6 +43,20 @@ const Home = () => {
     visible: { opacity: 1, y: 0 },
     hidden: { opacity: 0, y: -100 },
   };
+  let filterjob = jobs.filter((job) => {
+    return (
+      job.position.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      job.level.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      job.role.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      job.contract.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      job.location.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      job.company.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
+      // job.languages[0].toLowerCase().indexOf(input) !== -1 ||
+      job.languages.includes(input) ||
+      (job.tools.length > 0 &&
+        job.tools[0].toLowerCase().indexOf(input.toLowerCase()) !== -1)
+    );
+  });
   return loading ? (
     <CircularLoader />
   ) : (
@@ -60,9 +73,9 @@ const Home = () => {
           type='text'
           className='home__input-field'
           onChange={onChange}
+          placeholder='Search for job'
         />
-        {console.log(input)}
-        {jobs.map((data) => (
+        {filterjob.map((data) => (
           <motion.div
             className='home__mainFc'
             key={data.id}

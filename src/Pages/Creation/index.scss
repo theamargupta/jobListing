@@ -49,8 +49,14 @@
       margin-top: 2rem;
     }
     input,
-    select {
+    select,
+    textarea {
       font-size: 1rem;
+      border: none;
+      outline: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border-bottom: 2px solid hsl(180, 29%, 50%);
     }
     .error {
       color: red;
