@@ -1,6 +1,6 @@
 ## Job Listing Web app
 
-## [Live Site](https://amar-joblisting.netlify.app/creation)
+## [Live Site](https://amar-joblisting.netlify.app/)
 
 1. Registration/Login Screen (Social Authentication)
 2. Job Listing Screen
