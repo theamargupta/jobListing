@@ -7,10 +7,6 @@ import ConfigStore from './redux';
 import './index.scss';
 
 const store = ConfigStore();
-store.subscribe(() => {
-  console.log(store.getState());
-});
-console.log(store.getState());
 ReactDOM.render(
   // <React.StrictMode>
   <Provider store={store}>
@@ -18,6 +14,6 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  // </React.StrictMode>
+  // </React.StrictMode>,
   document.getElementById('root')
 );

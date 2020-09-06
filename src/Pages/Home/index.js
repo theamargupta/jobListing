@@ -10,7 +10,6 @@ import './index.scss';
 
 const Home = () => {
   const [input, setInput] = useState('');
-  const [filteredJobs, setFilteredJobs] = useState([]);
   const { jobs, loading } = useSelector(
     ({ jobs: { jobs, loading } }) => ({
       jobs: jobs,
