@@ -1,14 +1,7 @@
-// - Desaturated Dark Cyan: hsl(180, 29%, 50%)
-
-// ### Neutral
-
-// - Light Grayish Cyan (Background): hsl(180, 52%, 96%)
-// - Light Grayish Cyan (Filter Tablets): hsl(180, 31%, 95%)
-// - Dark Grayish Cyan: hsl(180, 8%, 52%)
-// - Very Dark Grayish Cyan: hsl(180, 14%, 20%)
 .details {
   background: hsl(180, 52%, 96%);
   min-height: 100vh;
+  height: 100%;
 
   .container {
     display: flex;
@@ -21,7 +14,7 @@
       align-items: center;
       flex-direction: column;
       padding: 2rem 1.5rem;
-      margin: 3rem 0;
+      margin: 2.5rem 0;
       background: #fff;
 
       .home__upper {
@@ -52,6 +45,17 @@
       .home__description {
         p {
           line-height: 1.6;
+        }
+        .home__desc__buttons {
+          max-width: 500px;
+        }
+        button {
+          background: hsl(180, 52%, 96%);
+          padding: 0.7rem 1rem;
+          color: hsl(180, 29%, 50%);
+          border: none;
+          margin: 0.3rem;
+          font-size: 1rem;
         }
       }
       h3,

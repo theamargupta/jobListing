@@ -24,7 +24,7 @@ const Details = () => {
   ) : (
     <div className='details'>
       <Header />
-        <div className='container'>
+      <div className='container'>
         <div className='main'>
           <img src={state.logo} alt='' />
           <h1>{state.position}</h1>
@@ -33,14 +33,23 @@ const Details = () => {
             <p>{state.location}</p>
           </div>
           <div className='home__lower'>
-            <p>
-              {state.postedAt}
-            </p>
-            <p>
-              {state.contract}
-            </p>
+            <p>{state.postedAt}</p>
+            <p>{state.contract}</p>
           </div>
           <div className='home__description'>
+            <div className="home__desc__buttons">
+              <button>{state.role}</button>
+              <button>{state.level}</button>
+              {state.tools &&
+                state.tools.map((value, index) => (
+                  <button key={index}>{value}</button>
+                ))}
+              {state.languages &&
+                state.languages.map((value, index) => (
+                  <button key={index}>{value}</button>
+                ))}
+            </div>
+
             <p>{state.desc}</p>
           </div>
         </div>

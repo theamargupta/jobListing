@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import firestore from '../../firebase';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { jobsListGen } from '../../redux/actionGenerator';
@@ -9,6 +9,8 @@ import { motion } from 'framer-motion';
 import './index.scss';
 
 const Home = () => {
+  const [input, setInput] = useState('')
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const { jobs, loading } = useSelector(
     ({ jobs: { jobs, loading } }) => ({
       jobs: jobs,
@@ -26,6 +28,12 @@ const Home = () => {
         dispatch(jobsListGen(snapshot.docs.map((doc) => doc.data())));
       });
   }, [dispatch]);
+
+  // Handle the change
+  const onChange = (e) => {
+    setInput(e.target.value)
+    console.log(jobs[0].tools, jobs[0].languages)
+  }
 
   const list = {
     visible: { opacity: 1 },
@@ -48,12 +56,18 @@ const Home = () => {
         animate='visible'
         variants={list}
       >
-        <input type='text' className='home__input-field' />
+        <input
+          type='text'
+          className='home__input-field'
+          onChange={onChange}
+        />
+        {console.log(input)}
         {jobs.map((data) => (
           <motion.div
             className='home__mainFc'
             key={data.id}
             variants={item}
+            style={{ cursor: 'pointer' }}
             onClick={() => history.push(`details/${data.id}`)}
           >
             <div className='home__left'>
