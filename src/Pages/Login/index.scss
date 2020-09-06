@@ -2,7 +2,7 @@
   background-color: hsl(180, 29%, 50%);
   font-family: 'Mulish', sans-serif;
   font-weight: 400;
-  color: #161843;
+  color: hsl(180, 14%, 20%);
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -17,7 +17,7 @@
   }
 
   .login-page {
-    background-color: #ffffff;
+    background-color: hsl(180, 52%, 96%);
     display: flex;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -88,7 +88,7 @@
 
   .input-button {
     background-color: hsl(180, 29%, 50%);
-    color: #ffffff;
+    color: hsl(180, 52%, 96%);
     padding: 1em;
     width: 30%;
     border: none;

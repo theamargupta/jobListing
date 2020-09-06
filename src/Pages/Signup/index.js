@@ -6,10 +6,10 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import CircularLoader from '../../components/circularLoader';
 import CustomCheckBox from '../../components/CustomCheckBox';
 import CustomTextInput from '../../components/CustomTextInput';
-import { auth, signInWithGoogle } from '../../firebase';
+import { auth, signInWithGoogle, signInWithGithub } from '../../firebase';
 import { Redirect, Link } from 'react-router-dom';
 import Google from '../../assets/Google__G__Logo 1.svg';
-import fb from '../../assets/f_logo_RGB-Blue_72 1.svg';
+import Github from '../../assets/GitHub-Mark-64px.png';
 import frame from '../../assets/Frame.svg';
 import rectangle from '../../assets/Rectangle 5.png';
 import '../Login/index.scss';
@@ -104,8 +104,11 @@ const Signup = () => {
                 <div className='alternative-options'>
                   <small>Or log in with</small>
                   <div className='social-buttons'>
-                    <button className='social-button'>
-                      <img src={fb} alt='' /> Github
+                    <button
+                      className='social-button'
+                      onClick={() => signInWithGithub()}
+                    >
+                      <img src={Github} alt='' /> Github
                     </button>
                     <button
                       className='social-button'

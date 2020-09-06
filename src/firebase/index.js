@@ -18,7 +18,10 @@ export const auth = firebase.auth();
 export const storage = firebase.storage();
 
 const provider = new firebase.auth.GoogleAuthProvider();
+const githubprovider = new firebase.auth.GithubAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
+
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGithub = () => auth.signInWithPopup(githubprovider);
 export { firebase };
 export default firestore;

@@ -3,4 +3,37 @@
   background-color: hsl(180, 29%, 50%);
   min-height: 17vh;
   object-fit: cover;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    height: 14vh;
+    padding: 1vh;
+    li {
+      cursor: pointer;
+      button {
+        padding: 0.5rem;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+        background: hsl(180, 52%, 96%);
+        color: hsl(180, 29%, 50%);
+        border: none;
+        cursor: pointer;
+      }
+    }
+    .header__left {
+      li {
+        margin-left: 1rem;
+      }
+    }
+    .header__right {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      li {
+        margin-right: 1rem;
+      }
+    }
+  }
 }

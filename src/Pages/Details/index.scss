@@ -9,4 +9,18 @@
 .details {
   background: hsl(180, 52%, 96%);
   min-height: 100vh;
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 50vh;
+    .main {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      p {
+        max-width: 500px;
+      }
+    }
+  }
 }

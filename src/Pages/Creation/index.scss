@@ -5,7 +5,7 @@
   font-weight: 400;
   color: hsl(180, 14%, 20%);
   height: 100%;
-  min-height: 100vh;
+  min-height: 87vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,15 +24,26 @@
     border-radius: 10px;
     overflow: hidden;
   }
+  .label {
+    margin: 1rem auto;
+  }
+  .select {
+    margin: 2rem auto;
+  }
   form {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 2rem auto;
+    width: 70%;
+    margin: 1rem auto;
     img {
-      height: 15vh;
-      width: 10vw;
+      width: 11vh;
       object-fit: cover;
+      border-radius: 50%;
+    }
+    div {
+      label {
+        margin: 0.5rem 1rem;
+      }
     }
     label {
       margin-top: 2rem;
@@ -52,6 +63,6 @@
     color: white;
     margin-top: 1rem;
     border-radius: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
