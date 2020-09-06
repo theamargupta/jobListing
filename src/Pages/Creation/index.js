@@ -232,6 +232,3 @@ const Creation = () => {
 };
 
 export default Creation;
-
-// .collection("jobslist")
-// .where("contract", "==", "Part Time")
