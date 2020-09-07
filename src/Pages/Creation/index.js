@@ -135,12 +135,6 @@ const Creation = () => {
               level: Yup.string()
                 .oneOf(['Junior', 'Midweight', 'Senior'], 'Invalid Level')
                 .required('Level is Required (select any one)'),
-              // languages: Yup.array()
-              //   .min(2, 'Must be at least 2 langauges')
-              //   .required('Required'),
-              // tools: Yup.array()
-              //   .min(2, 'Must be at least 2 tools')
-              //   .required('Required'),
             })}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               handleAdd(values);
@@ -245,42 +239,6 @@ const Creation = () => {
                     removeLanguage={tools.length > 1 ? removeTools : null}
                   />
                 ))}
-                {/* <div className='label'>
-                  <label htmlFor='tools'>Tools :</label>
-                  <CustomMultipleCheckbox name='tools' value='React'>
-                    React
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='tools' value='Sass'>
-                    Sass
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='tools' value='Vue'>
-                    Vue
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='tools' value='Django'>
-                    Django
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='tools' value='RoR'>
-                    RoR (Ruby on Rails)
-                  </CustomMultipleCheckbox>
-                </div>
-                <div className='label'>
-                  <label htmlFor='languages'>Languages :</label>
-                  <CustomMultipleCheckbox name='languages' value='Python'>
-                    Python
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='languages' value='Ruby'>
-                    Ruby
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='languages' value='JavaScript'>
-                    JavaScript
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='languages' value='HTML'>
-                    HTML
-                  </CustomMultipleCheckbox>
-                  <CustomMultipleCheckbox name='languages' value='CSS'>
-                    CSS
-                  </CustomMultipleCheckbox>
-                </div> */}
                 <div className='inputfield terms'>
                   <CustomCheckBox name='new'>New</CustomCheckBox>
                 </div>
