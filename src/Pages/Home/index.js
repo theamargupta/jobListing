@@ -104,9 +104,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             <div className='home__right'>
               <button>{data.role}</button>
               <button>{data.level}</button>
+
               {data.tools &&
                 data.tools.map((value, index) => (
                   <button key={index}>{value}</button>

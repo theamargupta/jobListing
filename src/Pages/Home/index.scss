@@ -91,6 +91,21 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      border-top: 1px solid rgb(29, 29, 29);
+      margin-top: 5px;
+      padding-top: 10px;
+      width: 80%;
+      button {
+        margin-top: 10px;
+      }
+    }
+    .home__left {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      img {
+        transform: translateY(-50%);
+      }
     }
   }
 }
