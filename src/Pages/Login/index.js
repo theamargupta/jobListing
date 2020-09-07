@@ -65,12 +65,14 @@ const Login = () => {
                   name='email'
                   type='email'
                   placeholder='example@test.com'
+                  className='form-input'
                 />
                 <CustomTextInput
                   label='Password'
                   name='password'
                   type='password'
                   placeholder='********'
+                  className='form-input'
                 />
                 <div className='input-options'>
                   <p className='sign-up'>

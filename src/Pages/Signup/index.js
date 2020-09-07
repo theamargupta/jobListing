@@ -51,13 +51,15 @@ const Signup = () => {
               name: Yup.string()
                 .min(3, 'Must be at least 3 character')
                 .max(15, 'Less than 15 charcters')
-                .required('Required'),
-              email: Yup.string().email('Invalid Email').required('Required'),
+                .required('Name is Required'),
+              email: Yup.string()
+                .email('Invalid Email')
+                .required('Email is Required'),
               acceptedTerms: Yup.boolean()
                 .oneOf([true], 'You must accept the terms and condition')
-                .required('Required'),
+                .required('You must accept the terms and condition'),
               password: Yup.string()
-                .required()
+                .required('Password is Required')
                 .min(2, 'Seems a bit short...')
                 .max(10, 'We prefer insecure system, try a shorter password.'),
             })}
@@ -75,18 +77,21 @@ const Signup = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
+                  className='form-input'
                 />
                 <CustomTextInput
                   label='Email'
                   name='email'
                   type='email'
                   placeholder='example@test.com'
+                  className='form-input'
                 />
                 <CustomTextInput
                   label='Password'
                   name='password'
                   type='password'
                   placeholder='********'
+                  className='form-input'
                 />
                 <CustomCheckBox name='acceptedTerms'>
                   &nbsp; I accept he terms and condition

@@ -7,6 +7,7 @@ const CustomCheckBox = ({ children, ...props }) => {
     <Fragment>
       <label className='checkbox'>
         <input type='checkbox' {...field} {...props} />
+        <span className='checkmark'></span>
         {children}
       </label>
       {meta.touched && meta.error ? (

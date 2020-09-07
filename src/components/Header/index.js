@@ -21,7 +21,9 @@ const Header = () => {
           </li>
         </div>
         <div className='header__right'>
-          <li onClick={() => history.push('/creation')}>Create Jobs</li>
+          <li onClick={() => history.push('/creation')}>
+            <button>Create Jobs</button>
+          </li>
           <li>
             Hi,{' '}
             <span role='img' aria-label='shakehand'>

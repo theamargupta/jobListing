@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useField } from 'formik';
 
-const CustomSelect = ({ label, ...props }) => {
+const CustomTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <Fragment>
@@ -11,11 +11,12 @@ const CustomSelect = ({ label, ...props }) => {
           <div className='error'>{meta.error}</div>
         ) : null}
       </label>
-      <div className='custom_select'>
-        <select {...field} {...props} />
-      </div>
+      {/* {meta.touched && meta.error ? (
+        <span className='error'> {meta.error}</span>
+      ) : null} */}
+      <textarea {...field} {...props} />
     </Fragment>
   );
 };
 
-export default CustomSelect;
+export default CustomTextInput;

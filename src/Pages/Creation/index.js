@@ -1,12 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import * as Yup from 'yup';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import firestore, { firebase } from '../../firebase';
 import { useSelector, shallowEqual } from 'react-redux';
 import CustomCheckBox from '../../components/CustomCheckBox';
-import CustomMultipleCheckbox from '../../components/CustomMultipleCheckbox';
 import CustomSelect from '../../components/CustomSelect';
 import CustomTextInput from '../../components/CustomTextInput';
+import CustomTextAreaInput from '../../components/CustomTextAreaInput';
 import ProgressBar from '../../components/ProgressBar';
 import Header from '../../components/Header';
 import Swal from 'sweetalert2';
@@ -65,166 +65,191 @@ const Creation = () => {
   };
   return (
     <Fragment>
-      <Header />
-
-      <div className='create'>
-        <div className='container'>
-          <div className='create-page'>
-            <Formik
-              initialValues={{
-                position: '',
-                company: '',
-                location: '',
-                new: false,
-                featured: false,
-                role: '',
-                level: '',
-                contract: '',
-                languages: [],
-                tools: [],
-                desc: '',
-              }}
-              validationSchema={Yup.object({
-                position: Yup.string()
-                  .min(3, 'Must be at least 3 character')
-                  .max(15, 'Less than 15 charcters')
-                  .required('Required'),
-                company: Yup.string()
-                  .min(3, 'Must be at least 3 character')
-                  .max(15, 'Less than 15 charcters')
-                  .required('Required'),
-                desc: Yup.string()
-                  .min(50, 'Must be at least 50 character')
-                  .max(600, 'Less than 600 charcters')
-                  .required('Required'),
-                location: Yup.string()
-                  .min(3, 'Must be at least 3 character')
-                  .max(15, 'Less than 15 charcters')
-                  .required('Required'),
-                new: Yup.boolean().oneOf([true, false], 'New'),
-                featured: Yup.boolean().oneOf([true, false], 'Featured'),
-                role: Yup.string()
-                  .oneOf(['Frontend', 'Backend', 'Fullstack'], 'Invalid Role')
-                  .required('Required'),
-                contract: Yup.string()
-                  .oneOf(['FullTime', 'PartTime'], 'Invalid contract')
-                  .required('Required'),
-                level: Yup.string()
-                  .oneOf(['Junior', 'Midweight', 'Senior'], 'Invalid Level')
-                  .required('Required'),
-                languages: Yup.array()
-                  .min(2, 'Must be at least 2 langauges')
-                  .required('Required'),
-                tools: Yup.array()
-                  .min(2, 'Must be at least 2 tools')
-                  .required('Required'),
-              })}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
-                handleAdd(values);
-                resetForm();
-                setSubmitting(false);
-              }}
-            >
-              {(props) => (
-                <Form>
-                  <h3>Create Job</h3>
-                  {fileerror && <h2>{fileerror}</h2>}
-                  {file && <ProgressBar file={file} setUrl={setImage} />}
-                  {Image && <img src={Image} alt='' />}
-                  <button>
-                    upload
-                    <input type='file' onChange={handleChange} name='img' />
-                  </button>
+      <div className='create_main'>
+        <Header />
+        <div className='wrapper'>
+          <div className='title'>Create Job</div>
+          <Formik
+            initialValues={{
+              position: '',
+              company: '',
+              location: '',
+              new: false,
+              featured: false,
+              role: '',
+              level: '',
+              contract: '',
+              // languages: [],
+              // tools: [],
+              desc: '',
+            }}
+            validationSchema={Yup.object({
+              position: Yup.string()
+                .min(3, 'Must be at least 3 character')
+                .max(15, 'Less than 15 charcters')
+                .required('Position is Required'),
+              company: Yup.string()
+                .min(3, 'Must be at least 3 character')
+                .max(15, 'Less than 15 charcters')
+                .required('Company Name is Required'),
+              desc: Yup.string()
+                .min(50, 'Must be at least 50 character')
+                .max(600, 'Less than 600 charcters')
+                .required('Description is Required'),
+              location: Yup.string()
+                .min(3, 'Must be at least 3 character')
+                .max(15, 'Less than 15 charcters')
+                .required('Location is Required'),
+              new: Yup.boolean().oneOf([true, false], 'New'),
+              featured: Yup.boolean().oneOf([true, false], 'Featured'),
+              role: Yup.string()
+                .oneOf(['Frontend', 'Backend', 'Fullstack'], 'Invalid Role')
+                .required('Role is Required (select any one)'),
+              contract: Yup.string()
+                .oneOf(['FullTime', 'PartTime'], 'Invalid contract')
+                .required('Contract is Required (select any one)'),
+              level: Yup.string()
+                .oneOf(['Junior', 'Midweight', 'Senior'], 'Invalid Level')
+                .required('Level is Required (select any one)'),
+              // languages: Yup.array()
+              //   .min(2, 'Must be at least 2 langauges')
+              //   .required('Required'),
+              // tools: Yup.array()
+              //   .min(2, 'Must be at least 2 tools')
+              //   .required('Required'),
+            })}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              handleAdd(values);
+              resetForm();
+              setSubmitting(false);
+            }}
+          >
+            {(props) => (
+              <Form className='form'>
+                {fileerror && <h2>{fileerror}</h2>}
+                {file && <ProgressBar file={file} setUrl={setImage} />}
+                {Image && <img src={Image} alt='' />}
+                <div className='inputfield'>
+                  <label htmlFor='img'>Upload Image</label>
+                  <input
+                    type='file'
+                    onChange={handleChange}
+                    name='img'
+                    className='input'
+                  />
+                </div>
+                <div className='inputfield'>
                   <CustomTextInput
                     label='Position'
                     name='position'
                     type='text'
                     placeholder='Position'
+                    className='input'
                   />
+                </div>
+                <div className='inputfield'>
                   <CustomTextInput
                     label='Company'
                     name='company'
                     type='text'
                     placeholder='Company'
+                    className='input'
                   />
+                </div>
+                <div className='inputfield'>
                   <CustomTextInput
                     label='Location'
                     name='location'
                     type='text'
                     placeholder='Location'
+                    className='input'
                   />
-                  <label htmlFor='desc'>Description :</label>
-                  <Field
+                </div>
+                <div className='inputfield'>
+                  <CustomTextAreaInput
+                    label='Description'
                     name='desc'
-                    as='textarea'
                     placeholder='Description..'
                     rows={5}
                     cols={50}
+                    className='textarea'
                   />
-                  <div className='select'>
-                    <CustomSelect label='role' name='role'>
-                      <option value=''>Select a role</option>
-                      <option value='Frontend'>Frontend</option>
-                      <option value='Backend'>Backend</option>
-                      <option value='Fullstack'>Fullstack</option>
-                    </CustomSelect>
-                    <CustomSelect label='level' name='level'>
-                      <option value=''>Select a Level</option>
-                      <option value='Junior'>Junior</option>
-                      <option value='Midweight'>Midweight</option>
-                      <option value='Senior'>Senior</option>
-                    </CustomSelect>
-                    <CustomSelect label='Contract:' name='contract'>
-                      <option value=''>Select a Contract</option>
-                      <option value='FullTime'>Full Time</option>
-                      <option value='PartTime'>Part Time</option>
-                    </CustomSelect>
-                  </div>
-                  <div className='label'>
-                    <label htmlFor='tools'>Tools :</label>
-                    <CustomMultipleCheckbox name='tools' value='React'>
-                      React
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='tools' value='Sass'>
-                      Sass
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='tools' value='Vue'>
-                      Vue
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='tools' value='Django'>
-                      Django
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='tools' value='RoR'>
-                      RoR (Ruby on Rails)
-                    </CustomMultipleCheckbox>
-                  </div>
-                  <div className='label'>
-                    <label htmlFor='languages'>Languages :</label>
-                    <CustomMultipleCheckbox name='languages' value='Python'>
-                      Python
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='languages' value='Ruby'>
-                      Ruby
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='languages' value='JavaScript'>
-                      JavaScript
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='languages' value='HTML'>
-                      HTML
-                    </CustomMultipleCheckbox>
-                    <CustomMultipleCheckbox name='languages' value='CSS'>
-                      CSS
-                    </CustomMultipleCheckbox>
-                  </div>
+                </div>
+                <div className='inputfield'>
+                  <CustomSelect label='Role :' name='role'>
+                    <option value=''>Select a role</option>
+                    <option value='Frontend'>Frontend</option>
+                    <option value='Backend'>Backend</option>
+                    <option value='Fullstack'>Fullstack</option>
+                  </CustomSelect>
+                </div>
+                <div className='inputfield'>
+                  <CustomSelect label='Level :' name='level'>
+                    <option value=''>Select a Level</option>
+                    <option value='Junior'>Junior</option>
+                    <option value='Midweight'>Midweight</option>
+                    <option value='Senior'>Senior</option>
+                  </CustomSelect>
+                </div>
+                <div className='inputfield'>
+                  <CustomSelect label='Contract:' name='contract'>
+                    <option value=''>Select a Contract</option>
+                    <option value='FullTime'>Full Time</option>
+                    <option value='PartTime'>Part Time</option>
+                  </CustomSelect>
+                </div>
+                {/* <div className='label'>
+                  <label htmlFor='tools'>Tools :</label>
+                  <CustomMultipleCheckbox name='tools' value='React'>
+                    React
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='tools' value='Sass'>
+                    Sass
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='tools' value='Vue'>
+                    Vue
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='tools' value='Django'>
+                    Django
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='tools' value='RoR'>
+                    RoR (Ruby on Rails)
+                  </CustomMultipleCheckbox>
+                </div>
+                <div className='label'>
+                  <label htmlFor='languages'>Languages :</label>
+                  <CustomMultipleCheckbox name='languages' value='Python'>
+                    Python
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='languages' value='Ruby'>
+                    Ruby
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='languages' value='JavaScript'>
+                    JavaScript
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='languages' value='HTML'>
+                    HTML
+                  </CustomMultipleCheckbox>
+                  <CustomMultipleCheckbox name='languages' value='CSS'>
+                    CSS
+                  </CustomMultipleCheckbox>
+                </div> */}
+                <div className='inputfield terms'>
                   <CustomCheckBox name='new'>New</CustomCheckBox>
+                </div>
+                <div className='inputfield terms'>
                   <CustomCheckBox name='featured'>Featured</CustomCheckBox>
-                  <button type='submit'>
-                    {props.isSubmitting ? 'loading...' : 'submit'}
-                  </button>
-                </Form>
-              )}
-            </Formik>
-          </div>
+                </div>
+                <div className='inputfield'>
+                  <input
+                    type='submit'
+                    value={props.isSubmitting ? 'loading...' : 'submit'}
+                    className='btn'
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </Fragment>

@@ -1,74 +1,184 @@
-.create {
-  height: 100vh;
-  background-color: hsl(180, 29%, 50%);
-  font-family: 'Mulish', sans-serif;
-  font-weight: 400;
-  color: hsl(180, 14%, 20%);
+.create_main {
+  background: hsl(180, 29%, 50%);
+  padding: 0 0px;
   height: 100%;
   min-height: 87vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .container {
-    width: 1000px;
-    max-width: 90%;
-    margin: auto;
-    padding: 1em 0;
+  .error {
+    color: red;
+    font-size: 0.8rem;
   }
-
-  .create-page {
+  .wrapper {
+    max-width: 600px;
+    width: 90%;
     background-color: hsl(180, 52%, 96%);
+    margin: 20px auto;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+    padding: 30px;
+  }
+
+  .wrapper .title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: hsl(180, 29%, 50%);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .wrapper .form {
+    width: 100%;
+  }
+
+  .wrapper .form .inputfield {
+    margin-bottom: 15px;
     display: flex;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
+    align-items: center;
   }
-  .label {
-    margin: 1rem auto;
+
+  .wrapper .form .inputfield label {
+    width: 200px;
+    color: hsl(180, 14%, 20%);
+    margin-right: 10px;
+    font-size: 14px;
   }
-  .select {
-    margin: 2rem auto;
+
+  .wrapper .form .inputfield .input,
+  .wrapper .form .inputfield .textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
   }
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    margin: 1rem auto;
-    img {
-      width: 11vh;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    div {
-      label {
-        margin: 0.5rem 1rem;
-      }
-    }
-    label {
-      margin-top: 2rem;
-    }
-    input,
-    select,
-    textarea {
-      font-size: 1rem;
-      border: none;
-      outline: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      border-bottom: 2px solid hsl(180, 29%, 50%);
-    }
-    .error {
-      color: red;
-      font-size: 1rem;
-    }
+
+  .wrapper .form .inputfield .textarea {
+    width: 100%;
+    height: 125px;
+    resize: none;
   }
-  button {
-    background: #1997bf;
-    padding: 0.5rem;
-    color: white;
-    margin-top: 1rem;
-    border-radius: 0.5rem;
-    font-size: 1.5rem;
+
+  .wrapper .form .inputfield .custom_select {
+    position: relative;
+    width: 100%;
+    height: 37px;
+  }
+
+  .wrapper .form .inputfield .custom_select:before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    border: 8px solid;
+    border-color: #d5dbd9 transparent transparent transparent;
+    pointer-events: none;
+  }
+
+  .wrapper .form .inputfield .custom_select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 1px solid #d5dbd9;
+    border-radius: 3px;
+  }
+
+  .wrapper .form .inputfield .input:focus,
+  .wrapper .form .inputfield .textarea:focus,
+  .wrapper .form .inputfield .custom_select select:focus {
+    border: 1px solid hsl(180, 29%, 50%);
+  }
+
+  .wrapper .form .inputfield p {
+    font-size: 14px;
+    color: hsl(180, 14%, 20%);
+  }
+  .wrapper .form .inputfield .check {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  .wrapper .form .inputfield .check input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .wrapper .form .inputfield .check .checkmark {
+    width: 15px;
+    height: 15px;
+    border: 1px solid hsl(180, 29%, 50%);
+    display: block;
+    position: relative;
+  }
+  .wrapper .form .inputfield .check .checkmark:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 5px;
+    height: 2px;
+    border: 2px solid;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(-45deg);
+    display: none;
+  }
+  .wrapper
+    .form
+    .inputfield
+    .check
+    input[type='checkbox']:checked
+    ~ .checkmark {
+    background: hsl(180, 29%, 50%);
+  }
+
+  .wrapper
+    .form
+    .inputfield
+    .check
+    input[type='checkbox']:checked
+    ~ .checkmark:before {
+    display: block;
+  }
+
+  .wrapper .form .inputfield .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0px;
+    background: hsl(180, 29%, 50%);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .wrapper .form .inputfield .btn:hover {
+    background: hsl(180, 89%, 42%);
+  }
+
+  .wrapper .form .inputfield:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 420px) {
+    .wrapper .form .inputfield {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .wrapper .form .inputfield label {
+      margin-bottom: 5px;
+    }
+    .wrapper .form .inputfield.terms {
+      flex-direction: row;
+    }
   }
 }
