@@ -168,7 +168,10 @@
   .wrapper .form .inputfield:last-child {
     margin-bottom: 0;
   }
-
+  .View_image {
+    object-fit: cover;
+    max-height: 20vh;
+  }
   @media (max-width: 420px) {
     .wrapper .form .inputfield {
       flex-direction: column;

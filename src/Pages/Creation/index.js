@@ -146,7 +146,7 @@ const Creation = () => {
               <Form className='form'>
                 {fileerror && <h2>{fileerror}</h2>}
                 {file && <ProgressBar file={file} setUrl={setImage} />}
-                {Image && <img src={Image} alt='' />}
+                {Image && <img src={Image} className="View_image" alt='' />}
                 <div className='inputfield'>
                   <label htmlFor='img'>Upload Image</label>
                   <input
