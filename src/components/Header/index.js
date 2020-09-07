@@ -24,7 +24,7 @@ const Header = () => {
           <li onClick={() => history.push('/creation')}>
             <button>Create Jobs</button>
           </li>
-          <li>
+          <li className="name">
             Hi,{' '}
             <span role='img' aria-label='shakehand'>
               👋🏻
