@@ -2,6 +2,7 @@ import React, { lazy, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Private';
 const Home = lazy(() => import('../Pages/Home'));
+const other = lazy(() => import('../Pages/Creation/other'));
 const Login = lazy(() => import('../Pages/Login'));
 const Signup = lazy(() => import('../Pages/Signup'));
 const Creation = lazy(() => import('../Pages/Creation'));
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/signup' component={Signup} />
+        <Route exact path='/other' component={other} />
         <PrivateRoute exact path='/home' component={Home} />
         <PrivateRoute exact path='/creation' component={Creation} />
         <PrivateRoute exact path='/details/:id' component={Details} />

@@ -9,6 +9,10 @@ import CustomTextInput from '../../components/CustomTextInput';
 import CustomTextAreaInput from '../../components/CustomTextAreaInput';
 import ProgressBar from '../../components/ProgressBar';
 import Header from '../../components/Header';
+import Language from '../../components/Language';
+import LanguageForm from '../../components/LanguageForm';
+import Tools from '../../components/Tools';
+import ToolsForm from '../../components/ToolsForm';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
 import './index.scss';
@@ -18,6 +22,28 @@ const Creation = () => {
   const [Image, setImage] = useState('https://i.ibb.co/k2ghK4f/shortly.png');
   const [file, setFile] = useState(null);
   const [fileerror, setError] = useState(null);
+  const [language, setLanguage] = useState(['html']);
+  const [tools, setTools] = useState(['react']);
+
+  const addLanguage = (text) => {
+    const newLanguage = [...language, text];
+    setLanguage(newLanguage);
+  };
+  const addTools = (text) => {
+    const newTools = [...tools, text];
+    setTools(newTools);
+  };
+
+  const removeLanguage = (index) => {
+    const newLanguage = [...language];
+    newLanguage.splice(index, 1);
+    setLanguage(newLanguage);
+  };
+  const removeTools = (index) => {
+    const newTools = [...tools];
+    newTools.splice(index, 1);
+    setTools(newTools);
+  };
   const { jobs } = useSelector(
     ({ jobs: { jobs } }) => ({
       jobs: jobs,
@@ -50,6 +76,8 @@ const Creation = () => {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             logo: Image,
             postedAt: 'Few Min Ago',
+            languages: language,
+            tools: tools,
           })
           .then(() => {
             Swal.fire({
@@ -79,8 +107,6 @@ const Creation = () => {
               role: '',
               level: '',
               contract: '',
-              // languages: [],
-              // tools: [],
               desc: '',
             }}
             validationSchema={Yup.object({
@@ -198,6 +224,29 @@ const Creation = () => {
                     <option value='PartTime'>Part Time</option>
                   </CustomSelect>
                 </div>
+
+                <div className='inputfield'>
+                  <LanguageForm addLanguage={addLanguage} lable={'Language'} />
+                </div>
+                {language.map((data, index) => (
+                  <Language
+                    key={index}
+                    index={index}
+                    data={data}
+                    removeLanguage={language.length > 1 ? removeLanguage : null}
+                  />
+                ))}
+                <div className='inputfield'>
+                  <LanguageForm addLanguage={addTools} lable={'Tools'} />
+                </div>
+                {tools.map((data, index) => (
+                  <Language
+                    key={index}
+                    index={index}
+                    data={data}
+                    removeLanguage={tools.length > 1 ? removeTools : null}
+                  />
+                ))}
                 {/* <div className='label'>
                   <label htmlFor='tools'>Tools :</label>
                   <CustomMultipleCheckbox name='tools' value='React'>
