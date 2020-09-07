@@ -11,8 +11,6 @@ import ProgressBar from '../../components/ProgressBar';
 import Header from '../../components/Header';
 import Language from '../../components/Language';
 import LanguageForm from '../../components/LanguageForm';
-import Tools from '../../components/Tools';
-import ToolsForm from '../../components/ToolsForm';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
 import './index.scss';
