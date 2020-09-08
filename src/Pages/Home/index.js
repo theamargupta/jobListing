@@ -50,8 +50,8 @@ const Home = () => {
       job.contract.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
       job.location.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
       job.company.toLowerCase().indexOf(input.toLowerCase()) !== -1 ||
-      // job.languages[0].toLowerCase().indexOf(input) !== -1 ||
-      job.languages.includes(input) ||
+      (job.languages.length > 0 &&
+        job.languages[0].toLowerCase().indexOf(input.toLowerCase()) !== -1) ||
       (job.tools.length > 0 &&
         job.tools[0].toLowerCase().indexOf(input.toLowerCase()) !== -1)
     );
