@@ -169,8 +169,10 @@
     margin-bottom: 0;
   }
   .View_image {
+    border-radius: 50%;
     object-fit: cover;
-    max-height: 20vh;
+    height: 20vh;
+    width: 20vh;
   }
   @media (max-width: 420px) {
     .wrapper .form .inputfield {
