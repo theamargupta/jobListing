@@ -19,7 +19,7 @@ function LanguageForm({ addLanguage, lable }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={handleSubmit}>Add</button>
+      <button className="add__button" onClick={handleSubmit}>Add</button>
     </Fragment>
   );
 }

@@ -168,6 +168,15 @@
   .wrapper .form .inputfield:last-child {
     margin-bottom: 0;
   }
+  .add__button {
+    padding: 0.5rem;
+    font-size: 1rem;
+     margin-right: -1rem;
+    color: hsl(180, 52%, 96%);
+    background: hsl(180, 29%, 50%);
+    border: none;
+    cursor: pointer;
+  }
   .View_image {
     border-radius: 50%;
     object-fit: cover;
