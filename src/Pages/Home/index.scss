@@ -83,6 +83,19 @@
       }
     }
   }
+  .home__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    // border-top: 1px solid rgb(29, 29, 29);
+    margin-top: 5px;
+    padding-top: 10px;
+    max-width: 50%;
+    button {
+      margin-top: 10px;
+    }
+  }
   @media (max-width: 500px) {
     .home__mainFc {
       flex-direction: column;
